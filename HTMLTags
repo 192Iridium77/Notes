@@ -1,0 +1,428 @@
+MAIN STRUCTURE:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Title here</title>
+</head>
+<body>
+page content
+</body>
+</html>
+
+TEXT ELEMENTS:
+
+<!--comments-->
+<h1> (header)
+<h2>
+<p> (paragraph)
+<hr> horizontal rule/line
+<em> (emphasis, italics)
+<b>
+<i>
+<s> (strike through)
+<u> (underline)
+<pre> (used to preserve whitespace)
+<small> (small print)
+<img src="img.png" alt="This is an image">
+<br> (newline break)
+<a href="http://typekit.com/">Typekit</a> (anchor or hyperlink)
+<sub> (subscript)
+<sup> (superscript)
+<mark> (highlighter)
+<ul> (unordered list)
+	<li> (list item within unordered list) </li>
+</ul>
+<ol> (ordered list)
+	<li> (list item within ordered list) </li>
+</ol>
+<dl> (description list)
+	<dt> (name, term or label) </dt>
+	<dd> (description or definition) </dd>
+</dl>
+<bdi> (indicates text that may have directional requirements)
+<bdo> (bidirectional override; indictates txt dir: ltr or rtl)
+<bdo dir="rtl">&#x05E9;&#x05DC;&#x05D5;&#x05DD;</bdo>
+<del> (deleted text)
+<ins> (inserted text)
+<ruby><rd><rp> (pronunciation guides for East Asian typography)
+<ruby>
+	[han character]<rp>(</rp><rt>han</rt><rp>)<rp>
+	[zi character]<rp>(</rp><rt>zi</rt><rp>)<rp>
+</ruby>
+<div> (generic block-level element, format with css)
+	<div class="listing"> (class classifies elements into conceptual groups)
+		<img src="felici-cover.gif" alt="">
+	</div>
+	<div id="news"> (id assigns a unique identifier)
+		<h1>New This Week</h1>
+	</div>
+	<div id="ISBN0321127307">
+		<img src="felici-cover.gif" alt="">
+	</div>
+<span> (generic phrase content, no line breaks)
+	<ul>
+		<li>John: <span class="tel">999.8282</span></li>
+	</ul>
+# div/span are given meaning with the id and class attributes
+<strong> (indicates strong importance)
+<wbr> (word break; where a word should be broken if needed)
+<base href="/home/matt/Documents/HTMLFiles/Java_Concurrency/"> (specifies root directory)
+
+
+SECTIONING ELEMENTS:
+
+<section> (thematic group of content)
+<section id="essays"><article>...</article></section>
+<article> (self contained works)
+<nav> (primary navigation of website)
+<aside> (sidebar like information)
+<header> (not necessarily placed up top!)
+<footer>
+<adress> (area for contact information)
+<abbr title="American Type Founders">ATF</abbr> (abbreviations, acronmyms)
+<cite>The Complete Manual of Typography</cite> (citations)
+<dfn> (defining terms)
+<code>
+<var> (variable)
+<samp> (program sample, render in monospace)
+<kbd> (user entered keyboard strokes) ??
+<time> (indicates dates times, or date-time combos)
+<datetime> (YYYY-MM-DD Thh:mm:ss±HH:MM, eg. 3pm PST on December 25, 2012 2012-12-25T15:00-8:00)
+Written by Jennifer Robbins (<time datetime="2012-09-01T 20:00-05:00"
+pubdate>September 1, 2012, 8pm EST</time>)
+
+SPECIAL:
+
+Escapes: &copy; &#169; (copyright symbol, non-ASCII)
+
+LINKS:
+
+<!--use the id attribute to create a unique flag you can link to
+eg. <h1 id="startH">H</h1>-->
+<a href="#startH">H</a>
+<a href="glossary.html#startH">See H</a>
+<a href="http://www.oreilly.com" target="_blank">O'Reilly</a> (opens in new window)
+<a href="mailto:alklecker@example.com">Contact Al Klecker</a> (mail to)
+<!--hivelogic.com/enkoder/ for encoding emails-->
+<!--../ is used to drop back one directory
+beginning with a / will like an absolute directory from the location of index
+relative directory links are made like this: "/chapter1/questions.html"-->
+
+IMAGES:
+
+<p><img src="thumbnails/window_thumb.jpg" alt="view from bedroom window" width="75"
+height="100">...</p>
+<iframe src="list.html" width="400" height="250"> (inline frames)
+
+CSS:
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<!--links to a css stylesheet-->
+
+<style>
+body {
+background-color: #faf2e4;
+	 margin: 0 15%;
+	 font-family: sans-serif;
+	 }
+h1 {
+	 text-align: center;
+	 font-family: serif;
+	 font-weight: normal;
+	 text-transform: uppercase;
+	 border-bottom: 1px solid #57b1dc;
+	 margin-top: 30px;
+}
+h2 {
+	 color: #d1633c;
+	 font-size: 1em;
+}
+</style>
+
+<style type="text/css">
+selector { property: value; } /* property value pair is a 'declaration block' */
+h1 {
+	color: green;
+	border-bottom: 3px solid red;
+	}
+p {
+	font-size: small;
+	font-family: sans-serif;
+	margin-left: 100px;
+	}
+p {
+	color: blue !important; /* prevents overwriting */
+	}
+h1 { border: 1px solid blue; }
+h1, h2, p, em, img { border: 1px solid blue; } /* group selectors */
+tt { font-family: Courier, monospace; }
+p { font-family: “Duru Sans”, Verdana, sans-serif; } /* quote if space */
+
+@font-face { /* www.fontsquirrel.com/fontface/generator */
+font-family: 'Font_name';
+src: url('myfont-webfont.eot?#iefix')
+format('embedded-opentype'),
+url('myfont-webfont.woff') format('woff'),
+url('myfont-webfont.ttf') format('truetype'),
+url('myfont-webfont.svg#svgFontName')
+format('svg');
+}
+/* Google Web Fonts (www.google.com/webfonts) */
+/* www.apaddedcell.com/sites/www.apaddedcell.com/files/fonts-article/
+final/index.html */
+
+/* font-size values: length unit | percentage | xx-small | x-small | small | medium | large | x-large | xx-large | (better to use relative values)*/
+h1 { font-size: 1.5em; }
+h1 { font-size: 150%; } /* 150% of 16px = 24px */
+/* standard to set body to 100% */
+/* font-weight values: normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | */
+dt { font-weight: bold; }
+/* font-style values: normal | italic | oblique | inherit */
+p { font: 1em sans-serif; }
+h3 { font: oblique bold small-caps 1.5em/1.8em Verdana, sans-serif; }
+/* the /1.8em seems to indicate line-height */
+
+black	 white	purple
+lime	 navy	aqua
+silver	 maroon	fuchsia
+olive	blue	orange
+gray	red	 green
+yellow	teal
+
+li em { color: olive; } /* descendant selector colors any em inside a li element */
+p > em {font-weight: bold;} /* child selector specifys only the direct descendant */
+h1 + p {font-style: italic;} /* adjacent selector picks only immediate follower */
+h1 ~ h2 {font-weight: normal;} /* general selector picks any element that shares a parent */
+<li id="catalog1234">Happy Face T-shirt</li> (for an id catalogue)
+li#catalog1234 { color: red; }
+#catalog1234 { color: red; }
+#links li { margin-left: 10px; } /* with a selector */
+p.special { color: orange; } /* class selector */
+.special { color: orange; } /* applies to all elements of the same class */
+* {color: gray; } /* makes foreground of every element gray */
+#intro * { color: gray; } /* all elements in an intro section */
+strong { color: red;}
+h1 strong { color: blue; } /* more specific, therefore overrides previous strong */
+p { line-height: 1.2em; }
+p#1 { text-indent: 2em; } /* tabs by two M distance */
+p#2 { text-indent: 25%; } /* tabs the first line by 25% of the paragraph size */
+p#3 { text-indent: -35px; } /* tabs the next lines forward by 35px */
+/* text-align values: left | right | center | justify | inherit */
+/* text-decoration values: none | underline | overline | line-through | blink */
+/* can use this to get rid of underlines under links */
+/* text-transform values: none | capitalize | lowercase | uppercase | inherit */
+p { letter-spacing: 8px; } /* inserts space between letters or words */
+p { word-spacing: 1.5em; }
+/* text-shadow values: ‘horizontal offset’ ‘vertical offset’ ‘blur radius’ ‘color’ | none */
+h1 {
+	color: darkgreen;
+	text-shadow: .2em .2em silver;
+	}
+h1 {
+	color: darkgreen;
+	text-shadow: -.3em -.3em silver;
+	text-shadow: .2em .2em .05em silver /* third value indicates blue */
+	text-shadow: 0 0 .7em purple; /* an outer glow */
+	}
+/* Other Text Properties:
+vertical-align
+Values: baseline | sub | super | top | text-top | middle |
+textbottom | bottom | percentage | length | inherit
+white-space
+Values: normal | pre | nowrap | pre-wrap | pre-line | inherit
+visibility
+Values: visible | hidden | collapse | inherit
+text-direction
+Values: ltr | rtl | inherit
+unicode-bidi
+Values: normal | embed | bidi-override | inherit
+font-size-adjust
+Values: number | none
+list-style-type
+Values: 	none | disc | circle | square | decimal | decimal-leading-zero | lower-alpha | upper-alpha | lower-latin | upper-latin | lower-roman | upper-roman | lower-greek | inherit */
+/* witdh and height change size of content box (margins not included) */
+/* box sizing values: content-box | border-box */
+p {
+	background: #c2f670;
+	width: 500px;
+	height: 150px;
+	padding: 20px;
+	border: 2px solid gray;
+	margin: 20px;
+	} /* includes visible width, still not including border or margins */
+p {
+	...
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 500px;
+	height: 150px;
+	} /* now includes border */
+/* overflow values: visible | hidden | scroll | auto | inherit (if content doesn't fit in box) */
+/* padding-top, padding-right, padding-bottom, padding-left
+Values: length measurement | percentage | inherit
+padding
+Values: length measurement | percentage | inherit
+“TRouBLe” for the order Top Right Bottom Left */
+blockquote {
+	padding: 1em 3em 1em 3em;
+	background-color: #D098D4;
+	}
+/* border-top-style, border-right-style, border-bottom-style, border-left-style
+border-style
+Values: none | dotted | dashed | solid | double | groove | ridge | inset | outset | inherit
+border-top-width, border-right-width, border-bottom-width, border-left-width
+border-width
+Values: length units | thin | medium | thick | inherit
+border-top-color, border-right-color, border-bottom-color, border-left-color
+border-color
+Values: color name or RGB value | transparent | inherit */
+div#special {
+	border-color: maroon aqua;
+	border-style: solid;
+	border-width: 6px;
+	width: 300px;
+	height: 100px;
+	}
+/* border-top-left-radius, border-top-right-radius, border-bottom-right-radius, border-bottom-left-radius, (border-radius - 1,2,3,4 or %)
+Values: length measurement | percentage */
+/* margin-top, margin-right, margin-bottom, margin-left, margin
+Values: length measurement | percentage | auto | inherit */
+/* display
+Values: inline | block | list-item | inline-block | table | inline-table |
+table-row-group | table-header-group | table-footer-group | table-row |
+table-column-group | table-column | table-cell | table-caption | none
+The following are new in CSS3: run-in | compact | ruby | ruby-base | ruby-text |
+ruby-base-container | ruby-text-container */
+/* box-shadow
+Values: 'horizontal offset' 'vertical offset' 'blur distance' 'spread distance' color inset | none */
+p {
+	-webkit-box-shadow: 6px 6px #666;
+	-moz-box-shadow: 6px 6px #666;
+	box-shadow: 6px 6px #666;
+	}
+p {
+	-webkit-box-shadow: inset 6px 6px 5px #666;
+	-moz-box-shadow: inset 6px 6px 5px #666;
+	box-shadow: inset 6px 6px 5px #666;
+	}
+img {
+	float: right;
+	float: left;
+	margin: 10px;
+}
+span.disclaimer {
+	float: right;
+	margin: 10px;
+	width: 200px; /* always provide width */
+	color: #FFF;
+	background-color: #9D080D;
+	padding: 4px;
+	}
+p#float {
+	float: left;
+	width: 200px;
+	margin-top: 0px;
+	background: #A5D3DE;
+	}
+/* clear (stops next element from appearing withing the space of the float)
+Values: left | right | both | none | inherit */
+h2 {
+	clear: left;
+	margin-top: 2em;
+	}
+#container { /* two columns of text */
+	float: left;
+	width: 100%;
+	background-color: #GGG;
+	padding: 1em;
+	}
+#container { /* alternative columns using overflow */
+	overflow: auto;
+	width: 100%;
+	background-color: #GGG;
+	padding: 1em;
+	}
+</style>
+
+NAVIGATION MENU:
+
+<ul>
+<li><a href="#">Serif</a></li>
+<li><a href="#">Sans-serif</a></li>
+<li><a href="#">Script</a></li>
+<li><a href="#">Display</a></li>
+<li><a href="#">Dingbats</a></li
+</ul>
+
+<style>
+ul {
+	list-style-type: none; /* turn off bullets */
+	margin: 0;
+	padding: 0;
+	}
+ul li {
+	float: left; /* float each item to left so they stack */
+	}
+ul li a {
+	display: block;
+	/* more styles */
+	}
+/* Clear the element that comes after the menu in the document so it starts
+below the menu */
+#nav {
+	...
+	overflow: hidden;
+	width: 100%;
+	}
+#products {
+	...
+	overflow: hidden;
+	}
+
+#nav ul li a {
+	display: block;
+	padding: .5em;
+	border: 1px solid #ba89a8;
+	border-radius: .5em;
+	margin: .25em;
+	}
+
+div#a {
+	position: relative;
+	/* moves an element relative to its original spot in the flow.*/
+	/* creates the containing block */
+	height: 120px;
+	width: 300px;
+	border: 1px solid;
+	background-color: #CCC;
+	}
+div#b {
+	position: absolute; /* position relative to containing block */
+	top: 20px;
+	right: 30px;
+	bottom: 40px;
+	left: 50px;
+	border: 1px solid;
+	background-color: teal;
+	}
+</style>
+
+
+
+
+
+
+
+
+
+<h1 style="color: red">Introduction</h1> (inline styles)
+
+
+COMPATIBILITY:
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/
+trunk/html5-els.js"></script>
+<![endif]--> (HTML5 shiv: makes IE8.0 load sheet rules correctly, place in head)

