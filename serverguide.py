@@ -285,8 +285,10 @@ SELECT name, birth FROM pet WHERE MONTH(birth) = MOD(MONTH(CURDATE()), 12) + 1;;
 system clear;
 SELECT 1 IS NULL, 1 IS NOT NULL;
 # can't use ><= operators to test for NULL
+SELECT COUNT(*) FROM table; #determines number of rows in a given table
 
 $ mysqldump <login> <databasename> > file.sql  # use to export database
+$ mysql <login> <dbname> < file.sql #import
 
 Domain reg:
 username: em.live
